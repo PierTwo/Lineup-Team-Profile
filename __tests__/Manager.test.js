@@ -21,7 +21,7 @@ describe("Manager", () => {
 
       const manager = new Manager(name, id, email, officeNumber);
 
-      expect(manager.getOfficeNumber()).toEqual(1);
+      expect(manager.getOfficeNumber()).toEqual(officeNumber);
     });
   });
 
