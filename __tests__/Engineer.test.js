@@ -13,7 +13,7 @@ describe("Engineer", () => {
   });
 
   describe("getGitHub", () => {
-    it("should return the 'gitHub' property when called with the 'new' keyword and passed an 'gitHub' property", () => {
+    it("should return the 'gitHub' property when called with the 'new' keyword and passed a 'gitHub' property", () => {
       const name = "Gandalf";
       const id = 2;
       const email = "gandalf@middle-earth.com";
@@ -26,7 +26,7 @@ describe("Engineer", () => {
   });
 
   describe("getRole", () => {
-    it("should return the role as a 'Engineer' when called with 'new' keyword", () => {
+    it("should return the role as an 'Engineer' when called with 'new' keyword", () => {
       const engineer = new Engineer();
 
       expect(engineer.getRole()).toEqual("Engineer");
