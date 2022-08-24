@@ -55,7 +55,7 @@ function generateHTML(data, addEmployee) {
               </li>
               <li class="list-group-item">
                 <span class="fa-solid fa-envelope"></span> Email: 
-                <a href="${data.getEmail()}">${data.getEmail()}</a>
+                <a href="mailto:${data.getEmail()}">${data.getEmail()}</a>
               </li>`;
 
   switch (data.getRole()) {
@@ -71,7 +71,7 @@ function generateHTML(data, addEmployee) {
     case "Engineer":
       cardHTML += `\n              <li class="list-group-item">
                 <span class="fa-brands fa-github"></span> GitHub: 
-                <a href="https://github.com/${data.getGitHub()}">${data.getGitHub()}</a>
+                <a href="https://github.com/${data.getGitHub()}" target="_blank">${data.getGitHub()}</a>
               </li>
             </ul>
           </div>
