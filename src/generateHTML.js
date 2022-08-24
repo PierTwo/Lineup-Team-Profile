@@ -1,8 +1,12 @@
+// Imports the writeToFile function
 const writeToFile = require("./writeToFile");
 
+// Creates an empty array to be filled with the employee cards
 const cardArr = [];
 
+// Function to generate the HTML using argument data passed from the inquirer responses
 function generateHTML(data, addEmployee) {
+  // String of the required HTML needed to add the cards to
   const html = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,6 +45,7 @@ function generateHTML(data, addEmployee) {
       <div class="row justify-content-center">
         `;
 
+  // String of main card HTML with the name, role icon, role, and email data that was passed to the function from the inquirer response
   let cardHTML = `<div class="card col-md-3 m-3 p-0">
           <div class="card-header text-light">
             <h4 class="card-title">${data.getName()}</h4>
@@ -58,7 +63,9 @@ function generateHTML(data, addEmployee) {
                 <a href="mailto:${data.getEmail()}">${data.getEmail()}</a>
               </li>`;
 
+  // Switch statement to add the role specific info based on the role chosen for the employee from the inquirer data passed to the function
   switch (data.getRole()) {
+    // If the Manager role was chosen add the office number data
     case "Manager":
       cardHTML += `\n              <li class="list-group-item">
                 <span class="fa-solid fa-building"></span> Office Number: ${data.getOfficeNumber()}
@@ -68,6 +75,7 @@ function generateHTML(data, addEmployee) {
         </div>`;
       break;
 
+    // If the engineer role was chosen add the GitHub username data and use the username to make a link to their profile
     case "Engineer":
       cardHTML += `\n              <li class="list-group-item">
                 <span class="fa-brands fa-github"></span> GitHub: 
@@ -78,6 +86,7 @@ function generateHTML(data, addEmployee) {
         </div>`;
       break;
 
+    // If the intern role was chosen add the school data
     case "Intern":
       cardHTML += `\n              <li class="list-group-item">
                 <span class="fa-solid fa-school"></span> School: ${data.getSchool()}
@@ -91,18 +100,27 @@ function generateHTML(data, addEmployee) {
       break;
   }
 
+  // String of closing HTML tags needed to finish the HTML generation
   const closingTags = `\n      </div>
     </div>
   </body>
 </html>`;
 
+  // Push the generated card to the cardArr array
   cardArr.push(cardHTML);
 
+  // If the addEmployee argument returns as falsy or false...
   if (!addEmployee) {
+    // Then add all the generated HTML together by adding the html variable and the cardArr array
+    // and when adding the cardArr array join the array together with a new line between them and the correct amount of indention for the HTML code
     let generatedHTML = html + cardArr.join("\n        ");
+    // Add the closing tags to the generated HTML
     generatedHTML += closingTags;
+
+    // Call the writeToFile function with the generatedHTML passed to it
     writeToFile(generatedHTML);
   }
 }
 
+// Modularize and export the generateHTML function
 module.exports = generateHTML;
