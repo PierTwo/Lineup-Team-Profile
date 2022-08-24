@@ -8,9 +8,7 @@ function writeToFile(htmlData) {
     // If the err callback is truthy then write the error to the console. Otherwise log that the file was sucessfully created
     return err
       ? console.error(err)
-      : console.log(
-          "Succesfully created your team lineup! to /dist/index.html"
-        );
+      : console.log("Succesfully created your team lineup to /dist/index.html");
   });
 }
 
